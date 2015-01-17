@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /*
 Lead Programmer: Caleb Pudvar
 
@@ -10,10 +12,13 @@ Changelog: 1/1/2015 - initial health info design and testing;
 public class main {
 	
 	public static void execute(){
-		HealthInfo User1 = new HealthInfo(70, 140.2, 0, 65.5, 0);
+		Scanner scan = new Scanner(System.in);
+		
+		HealthInfo User1 = new HealthInfo(70, 140.2, 0, 65.5, 0, scan);
 		//HealthInfo User2 = new HealthInfo(30, 90, 160.8, 0, 80.4, 0);
 		
-		// TODO Auto-generated method stub
+		scan.close();
+		
 		System.out.println(User1.getName());
 		//System.out.println(User2.getTemperature());
 		
@@ -30,6 +35,7 @@ public class main {
 			//write current data
 			//randomize
 			User1.setTemperature();
+			User1.setBloodAlcContent();
 			System.out.println();
 		}
 		

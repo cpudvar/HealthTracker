@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class HealthInfo {
 	private String name;                           // = "Caleb";
 	private int age;                        	   // = 999;
-	private static double temperature;             // = 98.6;
+	private double temperature = 98.6;
 	private static double bloodAlcContent;         // = 0.0;
 	private static int heartrateBPM;               // = 2000;                 //patient heart rate in beats per minute
 	private static double cholesterol;             // = 999.99;
@@ -15,14 +15,14 @@ public class HealthInfo {
 	 * DEFAULT CTOR
 	 * "Health Card" which tracks user information, as well as current medical information
 	 */
-	public HealthInfo(double temperature, double bloodAlcContent,  int heartrateBPM, double cholesterol, double glucose){	
-		this.setName();
-		this.setAge();
+	public HealthInfo(double temperature, double bloodAlcContent,  int heartrateBPM, double cholesterol, double glucose, Scanner scan){
+		this.setName(scan);
+		this.setAge(scan);
 		
 		//set arbitrary initial values and randomize over time
-		this.temperature = 98.6;
+		this.temperature = temperature;
 		//this.setTemperature(temperature);
-		this.setBloodAlcContent(bloodAlcContent);
+		HealthInfo.bloodAlcContent = 0.00;
 		this.setHeartrateBPM(heartrateBPM);
 		this.setCholesterol(cholesterol);
 		this.setGlucose(glucose);
@@ -39,10 +39,8 @@ public class HealthInfo {
 	/**
 	 * @param name the name to set
 	 */
-	public void setName() {
+	public void setName(Scanner scan) {
 		System.out.print("Enter Patient Name: ");
-		
-		Scanner scan = new Scanner(System.in);
 		String name = scan.next();
 		
 		this.name = name;
@@ -55,14 +53,12 @@ public class HealthInfo {
 		return age;
 	}
 	/**
+	 * @param scan 
 	 * @param age the age to set
 	 */
-	public void setAge() {
+	public void setAge(Scanner scan) {
 		System.out.print("Enter age: " ); 
-
-		Scanner scan = new Scanner(System.in);
 		int age = scan.nextInt();
-		scan.close();
 		
 		this.age = age;
 	}
@@ -76,8 +72,8 @@ public class HealthInfo {
 	/**
 	 * @param temperature the temperature to set
 	 */
-	public void setTemperature(){//double temperature) {
-		HealthInfo.temperature = RandomizeData.randomizeTemperature();
+	public void setTemperature(){
+		this.temperature = RandomizeData.randomizeTemperature();
 	}
 
 	/**
@@ -90,8 +86,8 @@ public class HealthInfo {
 	/**
 	 * @param bloodAlcContent the bloodAlcContent to set
 	 */
-	public void setBloodAlcContent(double bloodAlcContent) {
-		HealthInfo.bloodAlcContent = bloodAlcContent;
+	public void setBloodAlcContent() {
+		HealthInfo.bloodAlcContent = RandomizeData.randomizeBAC();
 	}
 
 	/**

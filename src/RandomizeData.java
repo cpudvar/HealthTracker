@@ -1,46 +1,45 @@
-import java.util.Random;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 
 public class RandomizeData {
 	/*
-	public static void randomizeAllData(Object user){
+	public static void randomizeAllData(HealthInfo user){
 	
-		user.setTemperature(randomizeTemperature(user.getTemperature()));
+		user.setTemperature(user.randomizeTemperature());
 		user.setBloodAlcContent(randomizeBAC(user.getBloodAlcContent()));
 		user.setHeartrateBPM(randomizeHeartRate(user.getHeartrateBPM()));
 		user.setCholesterol(randomizeCholesterol(user.getCholesterol()));
 		user.setGlucose(randomizeGlucose(user.getGlucose()));
 	}
 	*/
+	
+	//TODO compare effeciency of math.random vs nextDouble
 	public static double randomizeTemperature(){//double temperature){
 		//range of temperature between 95F and 105F
 		final int minTemp = 95;
 		final int maxTemp = 105;
-		
-		Random r = new Random();
-		
-		//Math.random() * (upper - lower) + lower;
+
 		double temperature = Math.random() * (maxTemp - minTemp) + minTemp;
-		//temperature = r.nextDouble();
+		temperature = round(temperature, 1);
 		System.out.println(temperature);
 		
 		return temperature;
 	}
 	
-	public static double randomizeBAC(double BAC){
+	public static double randomizeBAC(){
 		//range of BAC between 0.00 and 0.3 (cutoff where death is possible)
 		final double minBAC = 0.00;
 		final double maxBAC = 0.30;
 		
-		Random r = new Random();
-		BAC = minBAC+(maxBAC - minBAC) * r.nextDouble();
-		
+		double BAC = Math.random() * (maxBAC - minBAC) + minBAC;		
+		BAC = round(BAC, 2);
 		System.out.println(BAC);
 		
 		return BAC;
 	}
-	
-	public static int randomizeHeartRate(int heartRateBPM){
+	/*
+	public static int randomizeHeartRate(){
 		//TODO check this range
 		//range of heart rate between 50 and 200
 		
@@ -48,17 +47,26 @@ public class RandomizeData {
 		
 	}
 	
-	public static double randomizeCholesterol(double cholesterol){
-		//TODO check cholesterol range
-		//range of cholesterol between ??? and ???
+	public static int randomizeCholesterol(){
+		//TODO break down to HDL, LDL, triglycerides?
+		//range of cholesterol between 100 and 300
 		
 		return cholesterol;
 	}
 	
-	public static double randomizeGlucose(double glucose){
-		//TODO check range of glucose
-		//range of glucose between ??? and ???
+	public static int randomizeGlucose(){
+		//TODO check if hypoglycemic/normal/diabetic and modify warning ranges accordingly
+		//range of glucose between 50 and 250
 		
 		return glucose;
+	}
+	*/
+	
+	public static double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    BigDecimal bd = new BigDecimal(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
 	}
 }
