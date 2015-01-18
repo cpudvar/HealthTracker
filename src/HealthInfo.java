@@ -5,27 +5,27 @@ public class HealthInfo {
 	private String name;                           // = "Caleb";
 	private int age;                        	   // = 999;
 	private double temperature = 98.6;
-	private static double bloodAlcContent;         // = 0.0;
-	private static int heartrateBPM;               // = 2000;                 //patient heart rate in beats per minute
-	private static double cholesterol;             // = 999.99;
-	private static double glucose;                 // = 999.99;
+	private double bloodAlcContent = 0.0;
+	private int heartrateBPM = 130;           //patient heart rate in beats per minute
+	private int cholesterol = 100;
+	private int glucose = 100;
 
 	
 	/*
 	 * DEFAULT CTOR
 	 * "Health Card" which tracks user information, as well as current medical information
 	 */
-	public HealthInfo(double temperature, double bloodAlcContent,  int heartrateBPM, double cholesterol, double glucose, Scanner scan){
+	public HealthInfo(double temperature, double bloodAlcContent,  int heartrateBPM, int cholesterol, int glucose, Scanner scan){
 		this.setName(scan);
 		this.setAge(scan);
 		
 		//set arbitrary initial values and randomize over time
 		this.temperature = temperature;
 		//this.setTemperature(temperature);
-		HealthInfo.bloodAlcContent = 0.00;
-		this.setHeartrateBPM(heartrateBPM);
-		this.setCholesterol(cholesterol);
-		this.setGlucose(glucose);
+		this.bloodAlcContent = bloodAlcContent;
+		this.heartrateBPM = heartrateBPM;
+		this.cholesterol = cholesterol;
+		this.glucose = glucose;
 	}
 	
 	/**
@@ -79,7 +79,7 @@ public class HealthInfo {
 	/**
 	 * @return the bloodAlcContent
 	 */
-	public static double getBloodAlcContent() {
+	public double getBloodAlcContent() {
 		return bloodAlcContent;
 	}
 
@@ -87,7 +87,7 @@ public class HealthInfo {
 	 * @param bloodAlcContent the bloodAlcContent to set
 	 */
 	public void setBloodAlcContent() {
-		HealthInfo.bloodAlcContent = RandomizeData.randomizeBAC();
+		this.bloodAlcContent = RandomizeData.randomizeBAC();
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class HealthInfo {
 	 * @param heartrateBPM the heartrateBPM to set
 	 */
 	public void setHeartrateBPM(int heartrateBPM) {
-		HealthInfo.heartrateBPM = heartrateBPM;
+		this.heartrateBPM = heartrateBPM;
 	}
 	/**
 	 * @return the cholesterol
@@ -111,8 +111,8 @@ public class HealthInfo {
 	/**
 	 * @param cholesterol the cholesterol to set
 	 */
-	public void setCholesterol(double cholesterol) {
-		HealthInfo.cholesterol = cholesterol;
+	public void setCholesterol(int cholesterol) {
+		this.cholesterol = cholesterol;
 	}
 	/**
 	 * @return the glucose
@@ -123,7 +123,7 @@ public class HealthInfo {
 	/**
 	 * @param glucose the glucose to set
 	 */
-	public void setGlucose(double glucose) {
-		HealthInfo.glucose = glucose;
+	public void setGlucose(int glucose) {
+		this.glucose = glucose;
 	}
 }
