@@ -99,8 +99,8 @@ public class HealthInfo {
 	/**
 	 * @param heartrateBPM the heartrateBPM to set
 	 */
-	public void setHeartrateBPM(int heartrateBPM) {
-		this.heartrateBPM = heartrateBPM;
+	public void setHeartrateBPM() {
+		this.heartrateBPM = RandomizeData.randomizeHeartRate();
 	}
 	/**
 	 * @return the cholesterol
@@ -111,8 +111,8 @@ public class HealthInfo {
 	/**
 	 * @param cholesterol the cholesterol to set
 	 */
-	public void setCholesterol(int cholesterol) {
-		this.cholesterol = cholesterol;
+	public void setCholesterol() {
+		this.cholesterol = RandomizeData.randomizeCholesterol();
 	}
 	/**
 	 * @return the glucose
@@ -123,7 +123,7 @@ public class HealthInfo {
 	/**
 	 * @param glucose the glucose to set
 	 */
-	public void setGlucose(int glucose) {
-		this.glucose = glucose;
+	public void setGlucose() {
+		this.glucose = RandomizeData.randomizeGlucose();
 	}
 }

@@ -24,7 +24,6 @@ public class RandomizeData {
 
 		double temperature = Math.random() * (maxTemp - minTemp) + minTemp;
 		temperature = round(temperature, 1);
-		System.out.println(temperature);
 		
 		return temperature;
 	}
@@ -37,7 +36,6 @@ public class RandomizeData {
 		
 		double BAC = Math.random() * (maxBAC - minBAC) + minBAC;		
 		BAC = round(BAC, 2);
-		System.out.println(BAC);
 		
 		return BAC;
 	}
